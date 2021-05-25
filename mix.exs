@@ -27,7 +27,7 @@ defmodule Wootheex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rustler, "~> 0.21.0"},
+      {:rustler, "0.22.0-rc.1"},
 
       # Docs
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
@@ -56,20 +56,23 @@ defmodule Wootheex.MixProject do
 
   defp docs do
     [
-      main: "About", # The main page in the docs
+      # The main page in the docs
+      main: "About",
       extras: ["README.md": [filename: "About", title: "About"]]
     ]
   end
 
   defp compilers() do
-    [:rustler] ++ Mix.compilers
+    [:rustler] ++ Mix.compilers()
   end
 
   defp rustler_crates do
-    [wootheex_nif: [
+    [
+      wootheex_nif: [
         path: "native/wootheex_nif",
-        mode: rustc_mode(Mix.env)
-      ]]
+        mode: rustc_mode(Mix.env())
+      ]
+    ]
   end
 
   defp rustc_mode(:prod), do: :release
