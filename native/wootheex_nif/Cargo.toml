@@ -13,3 +13,6 @@ crate-type = ["dylib"]
 rustler = "0.22.0-rc.1"
 lazy_static = "1.0"
 woothee = "^0"
+
+[build]
+target = "x86_64-unknown-linux-musl"
